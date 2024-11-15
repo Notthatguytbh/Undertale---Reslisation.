@@ -1,0 +1,272 @@
+import turtle
+import random
+import time
+import sys
+
+time2 = time.time()
+
+print("Please fork this game and play it!")
+
+working = True
+stop = False
+t = turtle.Turtle()
+t2 = turtle.Turtle()
+scr = turtle.Screen()
+t.penup()
+t.goto(150, -150)
+t.shape('circle')
+t.color('red')
+t2.penup
+t2.fd(300)
+print("Loading...")
+t2.right(90)
+t2.fd(300)
+print("Loading...")
+t2.right(90)
+t2.fd(300)
+t2.right(90)
+t2.fd(300)
+print("Loading...")
+t2.right(90)
+t2.fd(300)
+t.penup()
+t2.write("PLEASE FORK THIS GAME AND PLAY IT")
+print("Done!")
+def tpback():
+  x, y = t.position()
+  if(x > 300):
+    t.goto(150,-150)
+
+  if(y < -300):
+    t.goto(150,-150)
+
+  if(y > 0):
+    t.goto(150,-150)
+
+  if(x < 0):
+    t.goto(150,-150)
+
+
+
+print("██████████▀▀▀▀▀▀▀▀▀▀▀▀▀██████████\n█████▀▀░░░░░░░░░░░░░░░░░░░▀▀█████\n███▀░░░░░░░░░░░░░░░░░░░░░░░░░▀███\n██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██\n█░░░░░░▄▄▄▄▄▄░░░░░░░░▄▄▄▄▄▄░░░░░█\n█░░░▄██▀░░░▀██░░░░░░██▀░░░▀██▄░░█\n█░░░██▄░░▀░░▄█░░░░░░█▄░░▀░░▄██░░█\n██░░░▀▀█▄▄▄██░░░██░░░██▄▄▄█▀▀░░██\n███░░░░░░▄▄▀░░░████░░░▀▄▄░░░░░███\n██░░░░░█▄░░░░░░▀▀▀▀░░░░░░░█▄░░░██\n██░░░▀▀█░█▀▄▄▄▄▄▄▄▄▄▄▄▄▄▀██▀▀░░██\n███░░░░░▀█▄░░█░░█░░░█░░█▄▀░░░░███\n████▄░░░░░░▀▀█▄▄█▄▄▄█▄▀▀░░░░▄████\n███████▄▄▄▄░░░░░░░░░░░░▄▄▄███████\n")
+
+def delay_print(s):
+    for c in s:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(0.15)
+
+delay_print("good luck, Human")
+
+
+def fwd():
+  t.setheading(90)
+  t.forward(8)
+  tpback()
+
+scr.onkey(fwd, "up")
+
+
+def left():
+  t.setheading(180)
+  t.fd(8)
+  tpback()
+scr.onkey(left, "left")
+
+
+def right():
+  t.setheading(0)
+  t.fd(8)
+  tpback()
+scr.onkey(right, "right")
+
+def down():
+  t.setheading(270)
+  t.fd(8)
+  tpback()
+scr.onkey(down, "down")
+scr.listen()
+
+def teleport():
+  for tnew in attacks:
+    h = random.randint(-300, 0)
+    j = random.randint(0, 300)
+    tnew.goto(j,h)
+  if done == False:
+    scr.ontimer(teleport, 100)
+  else:
+    print("done")
+ 
+attacks=[]
+done = False
+
+for i in range(15):
+  g = random.randint(0, 55)
+  f = random.randint(0, 300)
+  
+  tnew = turtle.Turtle()
+  attacks.append(tnew)
+  tnew.size = 10
+  tnew.penup()
+  tnew.speed(10)
+  tnew.goto(f, g)
+
+
+scr.ontimer(teleport, 100)
+
+
+  
+
+print(attacks)
+
+global shp, srm, hphit, a, b, x, y, sys
+
+mhp = 32
+shp = 1
+hphit = 32
+
+
+
+srm = 550
+
+
+
+def collide():
+  if working == True:
+    for pellet in attacks:
+      global hphit, done
+      x, y = pellet.position()
+      user = t
+      a, b = user.position()
+      if(abs(a - x)<15):
+        if(abs(b - y)<15):
+          hphit = hphit - shp
+          print("HP: " + str(hphit) + "/" + str(mhp))      
+          if(hphit == 0):
+            print("YOU LOSE")
+            t2.write("YOU LOSE")
+            done = True
+            break
+          time.sleep(0) 
+
+print('game started')
+timestamp = time.time()
+
+
+while done == False:
+  collide()
+
+  if srm <= 0:
+    print("YOU WIN!!!")
+    done = True
+    print(time.time() - timestamp)
+    exit()
+
+  if time.time() - time2 >= 30: 
+    time2 = time.time()
+    working = False
+    input1 = input("Do you want to fight, heal, or mercy?")
+    randnum = random.randint(44, 44)
+    randnum1 = random.randint(350, 350)
+    randnum2 = random.randint(0, 3)
+    randnum3 = random.randint(89, 89)
+    randnum4 = random.randint(0, 3)
+    randnum5 = random.randint(5,7)
+    randnum6 = random.randint(1,7)
+    randnum7 = random.randint(1,7)
+    fight = "fight"
+    heal = "heal"
+    mercy = "mercy"
+    killsans = "/sansmadmode"
+
+    
+
+
+    if fight == input1:
+
+      srm -= randnum
+
+      if randnum2 == 0:
+        print("MISS")
+        srm += randnum
+        print(srm)
+
+      if randnum3 == 0:
+        print("MISS")
+        srm += randnum
+        print(srm)
+
+      print("Sans HP:" + str(srm) + " Click on the screen again")
+
+      if randnum2 == randnum4:
+        srm -= randnum3
+        print("CRIT! Sans HP:" + str(srm) + " Click on the screen again")
+
+        if randnum2 == 0:
+          print("MISS")
+          srm += randnum3
+          print(srm)
+
+          if randnum3 == 0:
+            print("MISS")
+            srm += randnum3
+            print(srm)
+
+    if killsans == input1:
+
+      srm -= randnum1
+
+      print("sans hp:" + str(srm) + " You have found the easter egg!")
+
+
+    if srm <= 200:
+      print("It.. is.. over..")
+      shp = 4
+      tnew.speed(20)
+      hphit = hphit - shp
+      print("HP: " + str(hphit) + "/" + str(mhp))      
+      if(hphit <= 0):
+        print("YOU LOSE")
+        t2.write("YOU LOSE")
+        done = True
+        break
+
+
+    if heal == input1:
+      print("You heal yourself for " + str(randnum5))
+      if hphit >= 32:
+        print("You cannot heal now")
+      else: hphit += randnum5
+      if hphit >= 32:
+        hphit = 32
+        print("HP:" + str(hphit) + "/" + str(mhp))
+         
+      
+
+    if mercy == input1:
+      input2 = input("Spare: Flee")
+
+      spare = "spare"
+      flee = "flee"
+
+      if flee == input2:
+        working = True
+        exit()
+
+      if spare == input2:
+        print("You say that you will spare sans life.")
+
+        if randnum6 == randnum7:
+          print("He accepts. You two become friends. The End")
+          print("YOU NEITHER WIN NOR LOSE!!!")
+          print(time.time() - timestamp)
+          exit()
+
+          working = True
+
+        else:
+          print("sans declines")
+
+working = True
+
+print("loop done")
